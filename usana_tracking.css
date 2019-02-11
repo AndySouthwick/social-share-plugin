@@ -1,0 +1,148 @@
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 9999; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+}
+
+/* Modal Content/Box */
+.modal-content {
+    z-index: 9999; position: relative;
+    background-color: #ffffff;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding-top: 40px;
+    border: 1px solid #888;
+    width: 100%; /* Could be more or less, depending on screen size */
+    max-width: 650px;
+   padding-top: 40px;
+   padding-bottom: 40px;
+    border-radius: 3px;
+    color:#333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#share-form-btn{
+    border-radius: 3px;
+    background-color: #353535;
+    color: white;
+    padding-left: 20px;
+    padding-right:20px;
+    padding-top:8px;
+    padding-bottom:8px;
+    letter-spacing: 2px;
+}
+
+a.shop-link{
+    font-size:  14px;
+    border-radius: 50px;
+    background-color: #353535;
+    color: #ffffff!important;
+    padding-left: 20px;
+    padding-right:20px;
+    padding-top:8px;
+    padding-bottom:8px;
+    letter-spacing: 2px;
+    text-decoration: none!important;
+  
+}
+a.shop-link:hover{
+    background-color: #ffffff;
+    color: #353535!important;
+    border: #353535 solid 2px;
+}
+.modal-content span.close {
+    position: absolute;
+    right: 16px;
+    top: 8px;
+    
+}
+#show-link{
+    background-color: white!important;
+    color: white!important;
+    border: white!important;
+}
+.modal-content form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.modal-content form label{
+ font-weight: 100!important;
+ font-size: 14px!important;
+}
+.social-side-bar{
+    position: fixed;
+    top: 180px;
+    left: 16px;
+    z-index: 9999;
+}
+
+#alertSuccess{
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    padding: 8px;
+}
+
+@media(max-width: 500px){
+.social-side-bar{
+    padding:8px;
+    background-color: #353535;
+    top: inherit;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 48px;
+}
+#myBtn{
+    flex-direction: row!important;
+    justify-content: space-around;
+}
+#myBtn a, #myBtn div{
+    color: #fafafa!important;
+}
+div #alertSuccess{
+    color: #155724!important;
+    position: fixed;
+    bottom: 48px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+}
+#myBtn{
+    color: #353535;
+    display: flex;
+    flex-direction: column;
+}
+#myBtn a{
+    color: #353535;
+}
+#popup-share-links a{
+color: #353535;
+}
+
+@keyframes fadeOut {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+.alertFadeOut{
+    animation-delay: 1s;
+animation: fadeOut 4s;
+}
+div.copyTheLink{
+    display: inline;
+}
