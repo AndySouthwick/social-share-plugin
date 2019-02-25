@@ -11,6 +11,7 @@ License: GPL3
 URL Params (Wordpress Plugin)
 Copyright (C) 2017 Andrew Southwick
 */
+require('usana-authenticate.php');
 //Add custom query vars
 add_action( 'init', 'uss_script_enqueuer' );
 add_action( 'get_footer', 'social_shares' );
