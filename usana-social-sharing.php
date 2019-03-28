@@ -94,7 +94,7 @@ function uss_script_enqueuer() {
 function get_params_set_cookie(){
             if(!empty($_GET['associate']) && isset($_GET['associate'])){
           $cookie_value = $_GET['associate'];
-            setcookie('my_associates_id', $cookie_value, time() + (86400 * 30), "/", "dev.askthescientists.com/" );
+            setcookie('my_associates_id', $cookie_value, time() + (86400 * 30), "/", "askthescientists.com/" );
             $ilovecookies = $_COOKIE['my_associates_id'];
             if (!isset($_COOKIE['my_associates_id'])){
              header("Refresh:0");
