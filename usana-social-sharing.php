@@ -11,7 +11,6 @@ License: GPL3
 URL Params (Wordpress Plugin)
 Copyright (C) 2017 Andrew Southwick
 */
-require('usana-authenticate.php');
 //Add custom query vars
 add_action( 'init', 'uss_script_enqueuer' );
 add_action( 'get_footer', 'social_shares' );
@@ -46,7 +45,7 @@ add_shortcode( 'abuybutton', 'shortcode_associate_id' );
   <div class="modal-content">
     <span class="close"><i class="fa fa-times" aria-hidden="true"></i></span>
      
-    <h3>Add USANA id to share</h3>
+    <h3>ADD ASSOCIATE ID TO SHARE</h3>
     <form class="usana-share-form" method="POST">
     <div>
     <label>USANA ID</label>
@@ -81,10 +80,10 @@ function uss_script_enqueuer() {
     wp_enqueue_script( 'js-cookie', 'https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js', false );
     wp_enqueue_script( "magnific-popup", 'https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js', array('jquery') );
     wp_enqueue_script( "clipboard", '//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js', array('jquery') );
-    wp_enqueue_script( "tracking_script", plugin_dir_url( __FILE__ ) .'/assets/js/usana_tracking.js', array('jquery') );
+    wp_enqueue_script( "tracking_script", plugin_dir_url( __FILE__ ) .'/usana_tracking.js', array('jquery') );
     wp_localize_script( 'tracking_script', 'usanatracking', array('ajax_url' => admin_url( 'admin-ajax.php' )));
 
-     wp_register_style( "modal_styles", plugin_dir_url( __FILE__ ) .'assets/css/usana_tracking.css' );
+     wp_register_style( "modal_styles", plugin_dir_url( __FILE__ ) .'usana_tracking.css' );
      wp_register_style( "magnific-popup", 'https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css' );
 
     wp_enqueue_style( 'magnific-popup' );
@@ -92,11 +91,11 @@ function uss_script_enqueuer() {
 }
 //after customer of associate clicks link get the associate params set cookie
 function get_params_set_cookie(){
-            if(!empty($_GET['associate']) && isset($_GET['associate'])){
-          $cookie_value = $_GET['associate'];
-            setcookie('my_associates_id', $cookie_value, time() + (86400 * 30), "/", "askthescientists.com/" );
-            $ilovecookies = $_COOKIE['my_associates_id'];
-            if (!isset($_COOKIE['my_associates_id'])){
+            if(!empty($_GET['id']) && isset($_GET['id'])){
+          $cookie_value = $_GET['id'];
+            setcookie('attribute', $cookie_value, time() + (86400 * 30), "/", "askthescientists.com/" );
+            $ilovecookies = $_COOKIE['attribute'];
+            if (!isset($_COOKIE['attribute'])){
              header("Refresh:0");
 
         }
@@ -109,19 +108,7 @@ function shortcode_associate_id(){
 
 }
 //some changes stuff
-function ktwelve_shortcode(){
 
-  return '<a class="shop-link" href="https://www.usana.com/ux/cart/#!/en-US/so/PHX-URL/my_associates_id/112.010100&shopperSource=ATS" target="blank">'.__('SHOP HERE', 'usana').'</a>';
-
-}
-add_shortcode( 'ktwelve', 'ktwelve_shortcode' );
-
-function reset_shortcode(){
-
-  return '<a class="shop-link" href="https://www.usana.com/ux/cart/#!/en-US/so/PHX-URL/my_associates_id/251.010002&shopperSource=ATS" target="blank">'.__('SHOP HERE', 'usana').'</a>';
-
-}
-add_shortcode( 'reset', 'reset_shortcode' );
 
 // updated URLS for new shopping cart
 function biomega_shortcode(){
@@ -451,4 +438,3 @@ function celavivemakeup_shortcode(){
 
 }
 add_shortcode( 'celavivemakeup', 'celavivemakeup_shortcode' );
-	

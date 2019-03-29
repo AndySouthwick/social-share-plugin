@@ -15,9 +15,9 @@ jQuery(document).ready( function($) {
     }
 };
 	
-	function checkForVarInUrl(){
-		return localStorage.setItem("id", getUrlParameter('id'))
-	}
+function checkForVarInUrlThanCookieIt(){
+  Cookies.set('att', getUrlParameter('id'))
+}
 
 function usanaShareLinks(){
 
@@ -28,7 +28,6 @@ function usanaShareLinks(){
 
 }
 function updateShare(){
-	console.log('updateShareRan')
    var loc = window.location;
    var variabelstring = "?id=";
    var datafixstring = Cookies.get('my_associates_id');
@@ -49,8 +48,10 @@ function updateShare(){
      $("#myBtn #gl,#popup-share-links #gl").attr("href", "");
    }
 }
-function askSharePopup(){
+	
 
+function askSharePopup(){
+	
   $('.usana-share-form').on('submit', function(e){
     e.preventDefault();
     var $this = $(this);
@@ -68,7 +69,7 @@ function askSharePopup(){
   });
 
 }
-
+console.log('anything')
 function askSharePoupClose(){
 
   $('.modal-content .close').on('click', function(e){
@@ -104,22 +105,22 @@ function social_share_click(){
 
 function shop_shortcode(){
 
-  if(localStorage.getItem('id') !== "undefined"){
+  $('a.shop-link').each(function() {
+    var $this = $(this);
+    $this.hide();})
+
+  if(Cookies.get('att') && Cookies.get('att') !== 'undefined'){
 
     $('a.shop-link').each(function() {
         var $this = $(this);
         $this.show();
-//         var link = $this.attr('href').toString().replace('my_associates_id', Cookies.get('my_associates_id'));
+        var link = $this.attr('href').toString().replace('my_associates_id', Cookies.get('att'));
        
-                var link = $this.attr('href').toString().replace('my_associates_id', localStorage.getItem('id'));
-        console.log(link);
         $this.attr('href',link);
     });
-  } else {
-	  $('a.shop-link').each(function() {
-        var $this = $(this);
-        $this.hide();})
-  }
+  } 
+	  
+  
 
 }
 
@@ -182,15 +183,10 @@ window.Clipboard = (function(window, document, navigator) {
       copy: copy
   };
 })(window, document, navigator);
+checkForVarInUrlThanCookieIt();
 askSharePopup();
-
 updateShare();
-
 social_share_click();
-checkForVarInUrl();
 shop_shortcode();
-
 askSharePoupClose();
-
-
 })
