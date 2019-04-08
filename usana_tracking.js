@@ -16,7 +16,12 @@ jQuery(document).ready( function($) {
 };
 	
 function checkForVarInUrlThanCookieIt(){
-  Cookies.set('att', getUrlParameter('id'))
+  console.log(getUrlParameter('id'))
+  if(getUrlParameter('id') !== undefined){
+    Cookies.set('att', getUrlParameter('id'))
+  }else{
+    return
+  }
 }
 
 function usanaShareLinks(){
